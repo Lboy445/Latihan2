@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicTacTo</title>
+</head>
+<style>
+    *,
+    html {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    body {
+        background-color: black;
+        height: 100vh;
+    }
+
+    .kotak {
+        background-color: rgb(0, 0, 0);
+        height: 60px;
+        width: 60px;
+        border: 1px solid #ff0000;
+        box-shadow: 0px 0px 10px #ff0000, 0px 0px 5px #ff0000;
+        margin: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    a {
+        background-color: rgb(0, 0, 0);
+        height: 60px;
+        width: 60px;
+
+    }
+
+    p {
+        font-weight: bold;
+        font-size: 70px;
+        transform: rotate(45deg);
+        font-family: tahoma;
+        color: #ff0000;
+    }
+
+    .center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .column {
+        margin-top: 15%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    ul {
+        color: #ff0000;
+        margin: 30px;
+        margin-top: 20px;
+        font-family: tahoma;
+    }
+
+    .lagi {
+        box-shadow: 0px 0px 10px #ff0000, 0px 0px 5px #ff0000;
+        border-radius: 10px;
+        margin-top: 30px;
+        color: #ff0000;
+    }
+
+    .skor {
+        margin-top: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: tahoma;
+        font-size: larger;
+        color: #ff0000;
+    }
+</style>
+
+<body>
+    <div class="skor">SCORE</div>
+    <div class="center">
+        <ul id="skorx">X : 0</ul>
+        <ul id="skoro">O : 0</ul>
+    </div>
+    <div class="column">
+        <div class="center">
+            <div class="kotak" id="sh1"><a onclick="no1()" id="ke1"></a>
+                <p id="kotak1"></p>
+            </div>
+            <div class="kotak" id="sh2"><a onclick="no2()" id="ke2"></a>
+                <p id="kotak2"></p>
+            </div>
+            <div class="kotak" id="sh3"><a onclick="no3()" id="ke3"></a>
+                <p id="kotak3"></p>
+            </div>
+        </div>
+
+        <div class="center">
+            <div class="kotak" id="sh4"><a onclick="no4()" id="ke4"></a>
+                <p id="kotak4"></p>
+            </div>
+            <div class="kotak" id="sh5"><a onclick="no5()" id="ke5"></a>
+                <p id="kotak5"></p>
+            </div>
+            <div class="kotak" id="sh6"><a onclick="no6()" id="ke6"></a>
+                <p id="kotak6"></p>
+            </div>
+        </div>
+
+        <div class="center">
+            <div class="kotak" id="sh7"><a onclick="no7()" id="ke7"></a>
+                <p id="kotak7"></p>
+            </div>
+            <div class="kotak" id="sh8"><a onclick="no8()" id="ke8"></a>
+                <p id="kotak8"></p>
+            </div>
+            <div class="kotak" id="sh9"><a onclick="no9()" id="ke9"></a>
+                <p id="kotak9"></p>
+            </div>
+        </div>
+
+        <div class="center">
+            <div class="lagi" id="ulang" onclick="Mnulang()"></div>
+        </div>
+    </div>
+
+    <script>
+        let klik = 0;
+        function menang() {
+            kotak3.textContent = "✛"
+            kotak5.textContent = "✛"
+            kotak7.textContent = "✛"
+            kotak3.style.color = "#11ff00"
+            kotak5.style.color = "#11ff00"
+            kotak7.style.color = "#11ff00"
+            sh3.style.boxShadow = "0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+            sh3.style.border = "1px solid #11ff00"
+            sh5.style.boxShadow = "0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+            sh5.style.border = "1px solid #11ff00"
+            sh7.style.boxShadow = "0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+            sh7.style.border = "1px solid #11ff00"
+            ke1.style.display = "none"
+            ke2.style.display = "none"
+            ke3.style.display = "none"
+            ke4.style.display = "none"
+            ke5.style.display = "none"
+            ke6.style.display = "none"
+            ke7.style.display = "none"
+            ke8.style.display = "none"
+            ke9.style.display = "none"
+        }
+        function no1() {
+            klik += 1
+            ke1.style.display = "none"
+            ke5.style.display = "none"
+            kotak1.textContent = "☉⁠"
+            kotak5.textContent = "✛"
+            if (klik==3){menang()}
+        }
+        function no2() {
+            klik += 1
+            ke2.style.display = "none"
+            ke9.style.display = "none"
+            kotak2.textContent = "☉⁠"
+            kotak9.textContent = "✛"
+            if (klik==3){menang()}
+        }
+        function no3() {
+            klik += 1
+            ke3.style.display = "none"
+            ke1.style.display = "none"
+            kotak3.textContent = "☉⁠"
+            kotak1.textContent = "✛"
+            if (klik==3){menang()}
+        }
+        function no4() {
+            klik += 1
+            ke4.style.display = "none"
+            ke7.style.display = "none"
+            kotak4.textContent = "☉⁠"
+            kotak7.textContent = "✛"
+            if (klik==3){menang()}
+        }
+        function no5() {
+            klik += 1
+            ke5.style.display = "none"
+            ke3.style.display = "none"
+            kotak5.textContent = "☉⁠"
+            kotak3.textContent = "✛"
+            if (klik==3){menang()}
+        }
+        function no6() {
+            klik += 1
+            ke6.style.display = "none"
+            ke7.style.display = "none"
+            kotak6.textContent = "☉⁠"
+            kotak7.textContent = "✛"
+            if (klik==3){menang()}
+        }
+        function no7() {
+            klik += 1
+            ke7.style.display = "none"
+            ke6.style.display = "none"
+            kotak7.textContent = "☉⁠"
+            kotak6.textContent = "✛"
+            if (klik==3){menang()}
+        }
+        function no8() {
+            klik += 1
+            ke8.style.display = "none"
+            ke2.style.display = "none"
+            kotak8.textContent = "☉⁠"
+            kotak2.textContent = "✛"
+            if (klik==3){menang()}
+        }
+        function no9() {
+            klik += 1
+            ke9.style.display = "none"
+            ke8.style.display = "none"
+            kotak9.textContent = "☉⁠"
+            kotak8.textContent = "✛"
+            if (klik==3){menang()}
+        }
+
+    </script>
+</body>
+
+</html>
