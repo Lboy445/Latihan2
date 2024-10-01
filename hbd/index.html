@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+</head>
+
+<style>
+    *,
+    html {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background-color: black;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .kado {
+        margin-top: 45px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .kotak1 {
+        background-color: orange;
+        height: 30px;
+        width: 105px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .kotak {
+        background-color: orange;
+        height: 30px;
+        width: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .kotak2 {
+        margin-top: -10px;
+        background-color: orange;
+        height: 30px;
+        width: 100px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .motif {
+        background-color: red;
+        height: 100%;
+        width: 20px;
+    }
+
+    .garis {
+        width: 100%;
+        height: 3px;
+        background-color: rgba(0, 0, 0, 0.466);
+    }
+
+    .row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        margin-bottom: -15px;
+    }
+
+    .column {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin: 20px;
+    }
+
+    .pita1 {
+        background-color: red;
+        height: 15px;
+        width: 25px;
+        margin-top: -8px;
+        margin-right: -6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: rotate(15deg);
+        border-radius: 10px;
+    }
+
+    .pita2 {
+        background-color: red;
+        height: 10px;
+        width: 25px;
+        margin-bottom: -5px;
+        border-radius: 2px;
+    }
+
+    .pita3 {
+        background-color: red;
+        height: 15px;
+        width: 25px;
+        margin-top: -8px;
+        margin-left: -6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: rotate(-15deg);
+        border-radius: 10px;
+    }
+
+    .hitam {
+        height: 10px;
+        width: 20px;
+        background-color: black;
+        border-radius: 10px;
+    }
+
+    p {
+        font-size: larger;
+        font-family: Tahoma;
+        color: orange;
+        animation: animaasi 5s infinite;
+        font-weight: bold;
+    }
+
+    .teks {
+        margin-top: 50%;
+        font-weight: bold;
+    }
+
+    .isipapan {
+        font-size: larger;
+        font-family: Tahoma;
+        color: black;
+        font-weight: bold;
+    }
+
+    @keyframes animaasi {
+        20% {
+            font-size: 10px;
+        }
+
+        50% {
+            font-size: 20px;
+        }
+
+        70% {
+            font-size: 20px;
+        }
+
+        90% {
+            font-size: 10px;
+        }
+    }
+
+    .a {
+        color: transparent;
+        position: absolute;
+
+    }
+
+    .papan {
+        background-color: rgba(255, 255, 255, 0.596);
+        width: 320px;
+        height: 140px;
+        position: absolute;
+        border-radius: 10px;
+        padding: 10px;
+        margin-top: 50%;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        animation: boom 1s;
+
+    }
+
+    @keyframes turun {
+        0% {
+            margin-top: 0%;
+        }
+
+        30% {
+            margin-top: -5px;
+        }
+
+        60% {
+            margin-Top: -10px;
+        }
+
+        90% {
+            margin-top: -5px;
+        }
+
+        100% {
+            margin-top: 0%;
+        }
+
+    }
+
+    @keyframes naik {
+        0% {
+            margin-top: -5%;
+        }
+
+        30% {
+            margin-top: -10px;
+        }
+
+        60% {
+            margin-Top: -5px;
+        }
+
+        90% {
+            margin-top: -0px;
+        }
+
+        100% {
+            margin-top: -5px;
+        }
+
+    }
+
+    @keyframes boom {
+        0% {
+            width: 210px;
+            height: 80px;
+        }
+
+        50% {
+            width: 320px;
+            height: 140px;
+        }
+
+        100% {
+            width: 320px;
+            height: 140px;
+        }
+    }
+
+    .pilih1 {
+        margin: 10px;
+        font-size: larger;
+        animation: naik 2s infinite;
+    }
+
+    .pilih2 {
+        margin: 10px;
+        font-size: larger;
+        animation: turun 2s infinite;
+
+
+    }
+
+    .row2 {
+        position: absolute;
+        margin-top: 260px;
+        display: flex;
+    }
+
+    .tali {
+        color: red;
+        font-weight: bold;
+        font-size: 35px;
+        transform: rotate(110deg);
+        margin-right: -5px;
+        font-family: monospace;
+    }
+
+    .tali2 {
+        color: red;
+        font-weight: bold;
+        font-size: 35px;
+        transform: rotate(-110deg);
+        margin-left: -5px;
+        font-family: monospace;
+    }
+    .mark{
+        position: absolute;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: small;
+        margin-top: 90vh;
+    }
+    .mark2{
+        position: absolute;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: small;
+        margin-top: 93vh;
+    }
+</style>
+
+<body>
+    <h1 class="mark">@ Lzero</h1>
+    <h2 class="mark2">08-08-2024</h2>
+    <div class="teks" id="teks">
+        <p id="teks">HAPPY BIRTHDAY</p>
+    </div>
+    <div class="kado" id="kado">
+        <div class="row" id="pita">
+            <div class="tali">∆</div>
+            <div class="pita2"></div>
+            <div class="tali2">∆</div>
+        </div>
+        <div class="kotak1" id="tutup">
+            <div class="motif"></div>
+        </div>
+        <div class="kotak" onclick="buka()" id="play">
+            <div class="garis"></div>
+            <div class="motif"></div>
+        </div>
+        <div class="kotak2" id="kotak2">
+            <div class="motif"></div>
+        </div>
+        <div class="teks" id="teks2">
+            <p id="teks">Pencet tengah Kotak!</p>
+        </div>
+    </div>
+
+    <a class="a" id="a"></a>
+    <div class="row2" id="pilihan">
+        <div class="pilih1" id="pilih1" onclick="no1()">🎉</div>
+        <div class="pilih2" id="pilih2" onclick="no2()">🎁</div>
+        <div class="pilih1" id="pilih3" onclick="no3()">🎈</div>
+    </div>
+
+    <div class="papan" id="papan">
+        <div class="column">
+            <div class="isipapan" id="ucapan1"></div>
+            <div class="isipapan" id="ucapan2"></div>
+        </div>
+        <div class="app" id="app"></div>
+        <div class="app2" id="app2"></div>
+        <div class="app3" id="app3"></div>
+    </div>
+    <div class="column">
+        <img id="foto" class="foto" />
+        <div id="bentar" class="bentar"></div>
+    </div>
+    <script>
+        // created by   : Lalu Oji Darmaji/@Lzero
+        // selesai      : 08-08-2024 
+
+        let play = document.getElementById("play")
+        function playMusik() {
+            const lagu = "https://lboy445.github.io/Musik/musik.mp3"
+            let audio = new Audio(lagu)
+            audio.play()
+        }
+        play.addEventListener("click", playMusik)
+
+        papan.style.display = "none"
+        pilihan.style.display = "none"
+        teks = document.getElementById("teks")
+        teks2 = document.getElementById("teks2")
+        kado = document.getElementById("kado")
+        pita = document.getElementById("pita")
+        tutup = document.getElementById("tutup")
+        let nilai = 0
+        let nilai2 = 245
+        let nilai3 = 1
+        let akhir = 0
+
+        function ucapanNone(ucapan1, ucapan2) {
+            ucapan1.style.display = "none"
+            ucapan2.style.display = "none"
+        }
+
+        function klick(pilihan) {
+            pilihan.style.display = "block"
+            pilihan.style.display = "flex"
+            pilihan.style.alignItems = "center"
+            pilihan.style.justifyContent = "center"
+            pilihan.style.flexDirection = "row"
+        }
+
+        function buka() {
+            pita.style.display = "none"
+            nilai += 10
+            nilai2 -= 5
+            console.log("fungsi work")
+            teks.style.display = "none"
+            teks2.style.display = "none"
+            kado.style.marginTop = nilai2 + "px"
+            console.log(nilai)
+            if (nilai == 10) {
+                const jalan = document.querySelector(".a");
+                const a = "Sssssssssssselamat datang di entah apa namanya";
+
+                function textTypingEffect(elemet, a, i = 0) {
+                    if (i === 0) {
+                        elemet.textContent = "";
+                    }
+                    elemet.textContent += a[i];
+
+                    if (i === a.length - 1) {
+                        return;
+                    }
+                    nilai3 += 1
+                    console.log("nilai3=" + nilai3)
+                    console.log("a.length=" + a.length)
+                    tutup.style.transform = 'rotate(' + i + 'deg)'
+                    pita.style.transform = 'rotate(' + i + 'deg)'
+                    kado.style.marginTop = nilai2 - i + "px"
+                    pita.style.marginLeft = i + "px"
+                    play.style.marginTop = i + i + "px"
+                    if (nilai3 == a.length) {
+                        tutup.style.display = "none"
+                        play.style.marginTop = nilai2 - i - i + "px"
+                        klick(pilihan)
+                    }
+                    setTimeout(() => textTypingEffect(elemet, a, i + 1), 50)
+                }
+
+                textTypingEffect(jalan, a)
+
+            }
+
+        }
+
+        function selesai() {
+            let wait = document.getElementById("bentar")
+            let tunggu = document.createElement("div")
+            let interval
+            let time = 0
+            app.style.marginTop = "25px"
+            tunggu.textContent = ""
+            tunggu.style.color = "transparent"
+            tunggu.style.fontSize = "50px"
+            wait.appendChild(tunggu)
+            let tungguin = setInterval((interval) => {
+                tunggu.textContent = tunggu.textContent + "."
+                time += 1
+                if (time == 8) {
+                    play.style.display = "none"
+                    kotak2.style.display = "none"
+                    tunggu.style.display = "none"
+                    let foto = document.getElementById("foto")
+                    foto.style.width = "200px"
+                    foto.style.height = "200px"
+                    console.log(foto.src)
+                    foto.src = "hay.gif"
+                }
+            }, 1000)
+            setInterval((interval) => {
+                clearInterval(tungguin)
+            }, 95000)
+        }
+
+        function no1() {
+            pilih1.style.display = "none"
+            papan.style.display = "block"
+            ucapan1.textContent = "🎉Happy Birthday🥳"
+            ucapan2.textContent = "Lutfiyah Tri Fitriyani"
+            titik()
+            akhir += 1
+            console.log("ini akhir : ", akhir)
+            if (akhir == 3) {
+                selesai()
+            }
+        }
+
+        function no2() {
+            pilih2.style.display = "none"
+            papan.style.display = "block"
+            ucapan1.textContent = "Ciee sudah tambah tua😅"
+            ucapan2.textContent = "Semoga sehat selalu:)"
+            titik2()
+            akhir += 1
+            console.log("ini akhir : ", akhir)
+            if (akhir == 3) {
+                selesai()
+            }
+        }
+
+        function no3() {
+            pilih3.style.display = "none"
+            papan.style.display = "block"
+            ucapan1.textContent = "Kamu sudah 17 tahun ya?😅"
+            ucapan2.textContent = "Kapan nih mau bikin KTP?🤣"
+            titik3()
+            akhir += 1
+            console.log("ini akhir : ", akhir)
+            if (akhir == 3) {
+                selesai()
+            }
+        }
+
+        function titik() {
+            let id = document.getElementById("app")
+            let loading = document.createElement("div")
+            let interval
+            let time = 0
+            app.style.marginTop = "25px"
+            loading.textContent = ""
+            loading.style.color = "red"
+            loading.style.fontSize = "50px"
+            id.appendChild(loading)
+            let loaded = setInterval((interval) => {
+                loading.textContent = loading.textContent + "."
+                time += 1
+                if (time == 6) {
+                    papan.style.display = "none"
+                    app.style.display = "none"
+                }
+            }, 1000)
+            setInterval((interval) => {
+                clearInterval(loaded)
+            }, 95000)
+        }
+
+        function titik2() {
+            let id2 = document.getElementById("app2")
+            let loading2 = document.createElement("div")
+            let interval
+            let time2 = 0
+            app2.style.marginTop = "25px"
+            loading2.textContent = ""
+            loading2.style.color = "red"
+            loading2.style.fontSize = "50px"
+            id2.appendChild(loading2)
+            let loaded2 = setInterval((interval) => {
+                loading2.textContent = loading2.textContent + "."
+                time2 += 1
+                if (time2 == 6) {
+                    papan.style.display = "none"
+                    app2.style.display = "none"
+                }
+            }, 1000)
+            setInterval((interval) => {
+                clearInterval(loaded2)
+            }, 95000)
+        }
+
+        function titik3() {
+            let id3 = document.getElementById("app3")
+            let loading3 = document.createElement("div")
+            let interval
+            let time3 = 0
+            app3.style.marginTop = "25px"
+            loading3.textContent = ""
+            loading3.style.color = "red"
+            loading3.style.fontSize = "50px"
+            id3.appendChild(loading3)
+            let loaded3 = setInterval((interval) => {
+                loading3.textContent = loading3.textContent + "."
+                time3 += 1
+                if (time3 == 6) {
+                    papan.style.display = "none"
+                    app3.style.display = "none"
+                }
+            }, 1000)
+            setInterval((interval) => {
+                clearInterval(loaded3)
+            }, 95000)
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>
