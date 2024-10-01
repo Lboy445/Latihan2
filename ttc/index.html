@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicTacTo</title>
+</head>
+<style>
+    *,
+    html {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    body {
+        background-color: black;
+        height: 100vh;
+    }
+
+    .kotak {
+        background-color: rgb(0, 0, 0);
+        height: 60px;
+        width: 60px;
+        border: 1px solid #ff0000;
+        box-shadow: 0px 0px 10px #ff0000,0px 0px 5px #ff0000;
+        margin: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    a {
+        background-color: rgb(0, 0, 0);
+        height: 60px;
+        width: 60px;
+        
+    }
+
+    /* p {
+        font-weight: bold;
+        font-size: 65px;
+        color: #ff0000;
+    } */
+    p{
+        font-weight: bold;
+        font-size: 70px;
+        font-family: tahoma;
+        color: #ff0000;
+    }
+
+    .center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .column {
+        margin-top: 15%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    ul{
+        color: #ff0000;
+        margin: 30px;
+        margin-top: 20px;
+        font-family: tahoma;
+    }
+
+    .lagi{
+        box-shadow: 0px 0px 10px #ff0000,0px 0px 5px #ff0000;
+        border-radius: 10px;
+        margin-top: 30px;
+        color: #ff0000;
+    }
+
+    .skor{
+        margin-top: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: tahoma;
+        font-size: larger;
+        color: #ff0000;
+    }
+</style>
+
+<body>
+    <div class="skor">SCORE</div>
+    <div class="center">
+        <ul id="skorx">X : 0</ul>
+        <ul id="skoro">O : 0</ul>
+    </div>
+    <div class="column">
+        <div class="center">
+            <div class="kotak" id="sh1"><a onclick="no1()" id="ke1"></a><p id="kotak1"></p></div>
+            <div class="kotak" id="sh2"><a onclick="no2()" id="ke2"></a><p id="kotak2"></p></div>
+            <div class="kotak" id="sh3"><a onclick="no3()" id="ke3"></a><p id="kotak3"></p></div>
+        </div>
+
+        <div class="center">
+            <div class="kotak" id="sh4"><a onclick="no4()" id="ke4"></a><p id="kotak4"></p></div>
+            <div class="kotak" id="sh5"><a onclick="no5()" id="ke5"></a><p id="kotak5"></p></div>
+            <div class="kotak" id="sh6"><a onclick="no6()" id="ke6"></a><p id="kotak6"></p></div>
+        </div>
+
+        <div class="center">
+            <div class="kotak" id="sh7"><a onclick="no7()" id="ke7"></a><p id="kotak7"></p></div>
+            <div class="kotak" id="sh8"><a onclick="no8()" id="ke8"></a><p id="kotak8"></p></div>
+            <div class="kotak" id="sh9"><a onclick="no9()" id="ke9"></a><p id="kotak9"></p></div>
+        </div>
+
+        <div class="center">
+            <div class="lagi" id="ulang" onclick="Mnulang()"></div>
+        </div>
+    </div>
+        <script>
+            //Di buat oleh : Lzero. tanggal 11-08-2024 - 13-08-2024
+            //ttc01(123),ttc02(159),ttc03(147),ttc04(258),ttc05(369),ttc06(456),ttc07(789),ttc08(357)
+            let klik = 0;let nilai = 0;
+            let O1=0;let O2=0;let O3=0;let O4=0;let O5=0;let O6=0;let O7=0;let O8=0;let O9=0; 
+            let X1=0;let X2=0;let X3=0;let X4=0;let X5=0;let X6=0;let X7=0;let X8=0;let X9=0;
+            let pointx=0;let pointo=0;
+            function selesai(){
+                ke1.style.display="none"
+                ke2.style.display="none"
+                ke3.style.display="none"
+                ke4.style.display="none"
+                ke5.style.display="none"
+                ke6.style.display="none"
+                ke7.style.display="none"
+                ke8.style.display="none"
+                ke9.style.display="none"
+                skoro.textContent="O : "+pointo
+                skorx.textContent="x : "+pointx
+                ulang.textContent="Main Ulang"
+                ulang.style.padding="20px"
+            }
+
+            function Mnulang(){
+                ke1.style.display="block"
+                ke2.style.display="block"
+                ke3.style.display="block"
+                ke4.style.display="block"
+                ke5.style.display="block"
+                ke6.style.display="block"
+                ke7.style.display="block"
+                ke8.style.display="block"
+                ke9.style.display="block"
+                kotak1.textContent = ""
+                kotak2.textContent = ""
+                kotak3.textContent = ""
+                kotak4.textContent = ""
+                kotak5.textContent = ""
+                kotak6.textContent = ""
+                kotak7.textContent = ""
+                kotak8.textContent = ""
+                kotak9.textContent = ""
+                klik=0
+                O1=0;O2=0;O3=0;O4=0;O5=0;O6=0;O7=0;O8=0;O9=0;
+                X1=0;X2=0;X3=0;X4=0;X5=0;X6=0;X7=0;X8=0;X9=0;
+                kotak1.style.color="#ff0000"
+                kotak2.style.color="#ff0000"
+                kotak3.style.color="#ff0000"
+                kotak4.style.color="#ff0000"
+                kotak5.style.color="#ff0000"
+                kotak6.style.color="#ff0000"
+                kotak7.style.color="#ff0000"
+                kotak8.style.color="#ff0000"
+                kotak9.style.color="#ff0000"
+                sh1.style.boxShadow="0px 0px 10px #ff0000,0px 0px 5px #ff0000"
+                sh1.style.border="1px solid #ff0000"
+                sh2.style.boxShadow="0px 0px 10px #ff0000,0px 0px 5px #ff0000"
+                sh2.style.border="1px solid #ff0000"
+                sh3.style.boxShadow="0px 0px 10px #ff0000,0px 0px 5px #ff0000"
+                sh3.style.border="1px solid #ff0000"
+                sh4.style.boxShadow="0px 0px 10px #ff0000,0px 0px 5px #ff0000"
+                sh4.style.border="1px solid #ff0000"
+                sh5.style.boxShadow="0px 0px 10px #ff0000,0px 0px 5px #ff0000"
+                sh5.style.border="1px solid #ff0000"
+                sh6.style.boxShadow="0px 0px 10px #ff0000,0px 0px 5px #ff0000"
+                sh6.style.border="1px solid #ff0000"
+                sh7.style.boxShadow="0px 0px 10px #ff0000,0px 0px 5px #ff0000"
+                sh7.style.border="1px solid #ff0000"
+                sh8.style.boxShadow="0px 0px 10px #ff0000,0px 0px 5px #ff0000"
+                sh8.style.border="1px solid #ff0000"
+                sh9.style.boxShadow="0px 0px 10px #ff0000,0px 0px 5px #ff0000"
+                sh9.style.border="1px solid #ff0000"
+                ulang.textContent=""
+                ulang.style.padding="0px"
+            }
+
+            function ttco1(){
+                kotak1.style.color="#11ff00"
+                kotak2.style.color="#11ff00"
+                kotak3.style.color="#11ff00"
+                sh1.style.boxShadow="0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+                sh1.style.border="1px solid #11ff00"
+                sh2.style.boxShadow="0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+                sh2.style.border="1px solid #11ff00"
+                sh3.style.boxShadow="0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+                sh3.style.border="1px solid #11ff00"
+                console.log("point o :",pointo)
+                selesai()
+            }
+
+            function ttco2(){
+                kotak1.style.color="#11ff00"
+                kotak5.style.color="#11ff00"
+                kotak9.style.color="#11ff00"
+                sh1.style.boxShadow="0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+                sh1.style.border="1px solid #11ff00"
+                sh5.style.boxShadow="0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+                sh5.style.border="1px solid #11ff00"
+                sh9.style.boxShadow="0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+                sh9.style.border="1px solid #11ff00"
+                selesai()
+            }
+
+            function ttco3(){
+                kotak1.style.color="#11ff00"
+                kotak4.style.color="#11ff00"
+                kotak7.style.color="#11ff00"
+                sh1.style.boxShadow="0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+                sh1.style.border="1px solid #11ff00"
+                sh4.style.boxShadow="0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+                sh4.style.border="1px solid #11ff00"
+                sh7.style.boxShadow="0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+                sh7.style.border="1px solid #11ff00"
+                selesai()
+            }
+
+            function ttco4(){
+                kotak2.style.color="#11ff00"
+                kotak5.style.color="#11ff00"
+                kotak8.style.color="#11ff00"
+                sh2.style.boxShadow="0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+                sh2.style.border="1px solid #11ff00"
+                sh5.style.boxShadow="0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+                sh5.style.border="1px solid #11ff00"
+                sh8.style.boxShadow="0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+                sh8.style.border="1px solid #11ff00"
+                selesai()
+            }
+
+            function ttco5(){
+                kotak3.style.color="#11ff00"
+                kotak6.style.color="#11ff00"
+                kotak9.style.color="#11ff00"
+                sh3.style.boxShadow="0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+                sh3.style.border="1px solid #11ff00"
+                sh6.style.boxShadow="0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+                sh6.style.border="1px solid #11ff00"
+                sh9.style.boxShadow="0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+                sh9.style.border="1px solid #11ff00"
+                selesai()
+            }
+
+            function ttco6(){
+                kotak4.style.color="#11ff00"
+                kotak5.style.color="#11ff00"
+                kotak6.style.color="#11ff00"
+                sh4.style.boxShadow="0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+                sh4.style.border="1px solid #11ff00"
+                sh5.style.boxShadow="0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+                sh5.style.border="1px solid #11ff00"
+                sh6.style.boxShadow="0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+                sh6.style.border="1px solid #11ff00"
+                selesai()
+            }
+
+            function ttco7(){
+                kotak7.style.color="#11ff00"
+                kotak8.style.color="#11ff00"
+                kotak9.style.color="#11ff00"
+                sh7.style.boxShadow="0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+                sh7.style.border="1px solid #11ff00"
+                sh8.style.boxShadow="0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+                sh8.style.border="1px solid #11ff00"
+                sh9.style.boxShadow="0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+                sh9.style.border="1px solid #11ff00"
+                selesai()
+            }
+
+            function ttco8(){
+                kotak3.style.color="#11ff00"
+                kotak5.style.color="#11ff00"
+                kotak7.style.color="#11ff00"
+                sh3.style.boxShadow="0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+                sh3.style.border="1px solid #11ff00"
+                sh5.style.boxShadow="0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+                sh5.style.border="1px solid #11ff00"
+                sh7.style.boxShadow="0px 0px 10px #11ff00,0px 0px 5px #11ff00"
+                sh7.style.border="1px solid #11ff00"
+                selesai()
+            }
+
+            function no1() {
+                klik += 1
+                nilai = klik % 2
+                if (nilai == 1) {
+                    O1+=1;O2+=1;O3+=1;
+                    kotak1.textContent = "☉⁠⁠"
+                    ke1.style.display="none"
+                    if(O1==3){pointo+=1;ttco1()}
+                    if(O2==3){pointo+=1;ttco2()}
+                    if(O3==3){pointo+=1;ttco3()}
+                   
+                }
+
+                if (nilai == 0) {
+                    X1+=1;X2+=1;X3+=1;
+                    kotak1.textContent = "✖"
+                    kotak1.style.fontSize = "50px"
+                    ke1.style.display="none"
+                    if(X1==3){pointx+=1;ttco1()}
+                    if(X2==3){pointx+=1;ttco2()}
+                    if(X3==3){pointx+=1;ttco3()}
+                }
+                if(klik==9){selesai()}
+            }
+
+            function no2() {
+                klik += 1
+                nilai = klik % 2
+                if (nilai == 1) {
+                    O1+=1;O4+=1;
+                    kotak2.textContent = "☉⁠⁠"
+                    ke2.style.display="none"
+                    console.log(klik)
+                    if(O1==3){pointo+=1;ttco1()}
+                    if(O4==3){pointo+=1;ttco4()}
+                }
+
+                if (nilai == 0) {
+                    X1+=1;X4+=1;
+                    kotak2.textContent = "✖"
+                    kotak2.style.fontSize = "50px"
+                    ke2.style.display="none"
+                    if(X1==3){pointx+=1;ttco1()}
+                    if(X4==3){pointx+=1;ttco4()}
+                }
+                if(klik==9){selesai()}
+            }
+
+            function no3() {
+                klik += 1
+                nilai = klik % 2
+                if (nilai == 1) {
+                    O1+=1;O5+=1;O8+=1;
+                    kotak3.textContent = "☉⁠⁠"
+                    ke3.style.display="none"
+                    console.log(klik)
+                    if(O1==3){pointo+=1;ttco1()}
+                    if(O5==3){pointo+=1;ttco5()}
+                    if(O8==3){pointo+=1;ttco8()}
+                }
+
+                if (nilai == 0) {
+                    X1+=1;X5+=1;X8+=1;
+                    kotak3.textContent = "✖"
+                    kotak3.style.fontSize = "50px"
+                    ke3.style.display="none"
+                    if(X1==3){pointx+=1;ttco1()}
+                    if(X5==3){pointx+=1;ttco5()}
+                    if(X8==3){pointx+=1;ttco8()}
+                }
+                if(klik==9){selesai()}
+            }
+
+            function no4() {
+                klik += 1
+                nilai = klik % 2
+                if (nilai == 1) {
+                    O3+=1;O6+=1;
+                    kotak4.textContent = "☉⁠⁠"
+                    ke4.style.display="none"
+                    console.log(klik)
+                    if(O3==3){pointo+=1;ttco3()}
+                    if(O6==3){pointo+=1;ttco6()}
+                }
+
+                if (nilai == 0) {
+                    X3+=1;X6+=1;
+                    kotak4.textContent = "✖"
+                    kotak4.style.fontSize = "50px"
+                    ke4.style.display="none"
+                    if(X3==3){pointx+=1;ttco3()}
+                    if(X6==3){pointx+=1;ttco6()}
+                }
+                if(klik==9){selesai()}
+            }
+
+            function no5() {
+                klik += 1
+                nilai = klik % 2
+                if (nilai == 1) {
+                    O2+=1;O4+=1;O6+=1;O8+=1;
+                    kotak5.textContent = "☉⁠⁠"
+                    ke5.style.display="none"
+                    console.log(klik)
+                    if(O2==3){pointo+=1;ttco2()}
+                    if(O4==3){pointo+=1;ttco4()}
+                    if(O6==3){pointo+=1;ttco6()}
+                    if(O8==3){pointo+=1;ttco8()}
+                }
+
+                if (nilai == 0) {
+                    X2+=1;X4+=1;X6+=1;X8+=1;
+                    kotak5.textContent = "✖"
+                    kotak5.style.fontSize = "50px"
+                    ke5.style.display="none"
+                    if(X2==3){pointx+=1;ttco2()}
+                    if(X4==3){pointx+=1;ttco4()}
+                    if(X6==3){pointx+=1;ttco6()}
+                    if(X8==3){pointx+=1;ttco8()}
+                }
+                if(klik==9){selesai()}
+            }
+
+            function no6() {
+                klik += 1
+                nilai = klik % 2
+                if (nilai == 1) {
+                    O5+=1;O6+=1;
+                    kotak6.textContent = "☉⁠⁠"
+                    ke6.style.display="none"
+                    console.log(klik)
+                    if(O5==3){pointo+=1;ttco5()}
+                    if(O6==3){pointo+=1;ttco6()}
+                }
+
+                if (nilai == 0) {
+                    X5+=1;X6+=1;
+                    kotak6.textContent = "✖"
+                    kotak6.style.fontSize = "50px"
+                    ke6.style.display="none"
+                    if(X5==3){pointx+=1;ttco5()}
+                    if(X6==3){pointx+=1;ttco6()}
+                }
+                if(klik==9){selesai()}
+            }
+
+            function no7() {
+                klik += 1
+                nilai = klik % 2
+                if (nilai == 1) {
+                    O3+=1;O7+=1;O8+=1;
+                    kotak7.textContent = "☉⁠⁠"
+                    ke7.style.display="none"
+                    console.log(klik)
+                    if(O3==3){pointo+=1;ttco3()}
+                    if(O7==3){pointo+=1;ttco7()}
+                    if(O8==3){pointo+=1;ttco8()}
+                }
+
+                if (nilai == 0) {
+                    X3+=1;X7+=1;X8+=1;
+                    kotak7.textContent = "✖"
+                    kotak7.style.fontSize = "50px"
+                    ke7.style.display="none"
+                    if(X3==3){pointx+=1;ttco3()}
+                    if(X7==3){pointx+=1;ttco7()}
+                    if(X8==3){pointx+=1;ttco8()}
+                }
+                if(klik==9){selesai()}
+            }
+
+            function no8() {
+                klik += 1
+                nilai = klik % 2
+                if (nilai == 1) {
+                    O4+=1;O7+=1;
+                    kotak8.textContent = "☉⁠⁠"
+                    ke8.style.display="none"
+                    console.log(klik)
+                    if(O4==3){pointo+=1;ttco4()}
+                    if(O7==3){pointo+=1;ttco7()}
+                }
+
+                if (nilai == 0) {
+                    X4+=1;X7+=1;
+                    kotak8.textContent = "✖"
+                    kotak8.style.fontSize = "50px"
+                    ke8.style.display="none"
+                    if(X4==3){pointx+=1;ttco4()}
+                    if(X7==3){pointx+=1;ttco7()}
+                }
+                if(klik==9){selesai()}
+            }
+
+            function no9() {
+                klik += 1
+                nilai = klik % 2
+                if (nilai == 1) {
+                    O2+=1;O5+=1;O7+=1;
+                    kotak9.textContent = "☉⁠⁠"
+                    ke9.style.display="none"
+                    console.log(klik)
+                    if(O2==3){pointo+=1;ttco2()}
+                    if(O5==3){pointo+=1;ttco5()}
+                    if(O7==3){pointo+=1;ttco7()}
+                }
+
+                if (nilai == 0) {
+                    X2+=1;X5+=1;X7+=1;
+                    kotak9.textContent = "✖"
+                    kotak9.style.fontSize = "50px"
+                    ke9.style.display="none"
+                    if(X2==3){pointx+=1;ttco2()}
+                    if(X5==3){pointx+=1;ttco5()}
+                    if(X7==3){pointx+=1;ttco7()}
+                }
+                if(klik==9){selesai()}
+            }
+
+        </script>
+</body>
+
+</html>
